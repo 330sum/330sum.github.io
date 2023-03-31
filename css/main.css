@@ -1,0 +1,151 @@
+@import url('../css/common.css');
+
+body {
+    background: #fff;
+    font-family: '휴먼모음T', cursive;
+    text-align: center;
+
+}
+
+.wrapper {
+    width: 1400px;
+    height: 1000px;
+    margin: 0 auto;
+    /* border: 1px solid blue; */
+    position: relative;
+}
+
+.wrapper .background {
+    background: url("../images/main.jpg") center / cover;
+    opacity: 0.3;
+    width: 1400px;
+    height: 1000px;
+    position: absolute;
+    z-index: -9999;
+}
+
+.wrapper .home {
+    /* border: 1px solid #000; */
+    position: absolute;
+    top: 40px;
+    right: 60px;
+
+}
+
+.wrapper .home img {
+    /* background: center / cover; */
+    width: 70px;
+    height: 70px;
+}
+
+.wrapper .text {
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    font-size: 2em;
+}
+
+.wrapper .text p {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.wrapper .text p em {
+    color: rgb(247, 66, 35);
+    font-size: 1.1em;
+}
+
+.wrapper .text .special {
+    font-size: 3em;
+}
+
+/* .wrapper .cat {
+    position: absolute;
+    border: 1px solid #000;
+    bottom: 0;
+    transition: 1s linear;
+} */
+
+.wrapper .level ul {
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    /* border: 1px solid #000; */
+}
+
+.wrapper .level ul li .box {
+    width: 300px;
+    height: 300px;
+    /* border: 1px solid #000; */
+    border-radius: 10%;
+}
+
+.wrapper .level ul li .box1 {
+    background: #e7aab7;
+}
+
+.wrapper .level ul li .box1:hover {
+    background: #df768c;
+    transform: scale(1.1);
+    transition-duration: 1s, 2s;
+}
+
+
+.wrapper .level ul li .box2 {
+    background: #accfee;
+}
+
+.wrapper .level ul li .box2:hover {
+    background: #609fd6;
+    transform: scale(1.1);
+    transition-duration: 1s, 2s;
+}
+
+.wrapper .level ul li .box3 {
+    background: #f5e0b6;
+}
+
+.wrapper .level ul li .box3:hover {
+    background: #f3c465;
+    transform: scale(1.1);
+    transition-duration: 1s, 2s;
+
+}
+
+
+.wrapper .level ul li .level {
+    font-size: 5em;
+    padding: 50px;
+    top: 20px;
+    position: absolute;
+    /* border: 1px solid #000; */
+    width: 100%;
+    left: 50%;
+    
+    top: 40%;
+    transform: translate(-50%, -50%);
+    
+    
+}
+
+
+.wrapper .level ul li {
+    position: relative;
+}
+
+.wrapper .level ul li h2 {
+    font-size: 1.3em;
+    /* border: 1px solid #000; */
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    top: 75%;
+    transform: translate(-50%, -50%);
+
+}
+
+.wrapper .level ul li h2 span {
+    font-size: 1.2em;
+    color: #f34906;
+
+}

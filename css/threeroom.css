@@ -1,0 +1,196 @@
+@import url('../css/common.css');
+
+body {
+    background: #fff;
+    font-family: '휴먼모음T', cursive;
+    font-weight: bold;
+}
+
+#wrapper {
+    width: 1600px;
+    height: 1100px;
+    margin: 0 auto;
+    position: relative;
+    /* border: 1px solid #000; */
+}
+
+.back {
+    position: absolute;
+    top: 40px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #5e5b5b;
+    padding-top: 100px;
+}
+
+h1>em {
+    font-size: 30px;
+    color: rgb(29, 75, 201);
+}
+
+.score {
+    /* border: 1px solid #000; */
+    text-align: right;
+    font-size: 45px;
+    padding: 15px;
+
+    color: rgb(233, 153, 6);
+}
+
+
+.counter {
+    /* border: 1px solid #000; */
+    text-align: center;
+    color: rgb(223, 39, 6);
+    font-size: 40px;
+    /* z-index: 9999; */
+}
+
+
+#wrapper .playground {
+    background: url(../images/three.jpg) center / cover;
+    width: 1600px;
+    height: 900px;
+    position: absolute;
+    z-index: -1000;
+
+}
+
+/* #wrapper #cat img {
+    position: absolute;
+    bottom: 50px;
+    left: 168px; 
+    /* 400/2-32 
+    z-index: 1000;
+} */
+
+#wrapper .cat {
+    background: green;
+    background: url(../images/cat.png) center / cover;
+    z-index: 9999;
+
+}
+
+#wrapper .fish {
+    background: url(../images/fish3.png) center no-repeat;
+}
+
+
+#wrapper .fish img {
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    /* display: none; */
+}
+
+
+.background>ul {
+
+    /* border: 1px solid #000; */
+    margin: 0 auto;
+    width: 1600px;
+    height: 900px;
+}
+
+.background>ul>li {
+    width: 1600px;
+}
+
+.background>ul>li>ul {
+
+    display: flex;
+    z-index: 1;
+}
+
+.background>ul>li>ul>li {
+    width: 80px;
+    height: 100px;
+    /* outline: 1px solid #ccc; */
+}
+
+
+
+.fish-box {
+    position: relative;
+    top: 0;
+    z-index: 1000;
+    height: 50px;
+    /* background: blue; */
+    display: flex;
+    justify-content: space-around;
+}
+
+.fish-box .layer {
+    width: 10px;
+    /* position: absolute; */
+    /* border: 1px solid #000; */
+}
+
+
+/* fall 클래스가 붙으면 떨어지는 애니메이션 */
+/* 애니메이션 10s 속성으로 만들자  */
+.fall {
+    animation: falling 8s linear forwards;
+}
+
+@keyframes falling {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    95% {
+        opacity: 0.95;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(0, 900px);
+    }
+}
+
+
+
+#finish {
+    width: 1600px;
+    height: 1100px;
+    background: url("../images/paws.jpg") center / cover;
+    font-size: 80px;
+    font-weight: 700;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 1000px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    /* 투명하게 해놓고 */
+    z-index: -100;
+    /* z인덱스 꼭 아래로 해놓기 */
+    /* 만약 투명도만 해두면 숫자구슬들 못 누름 */
+}
+
+#finish.show {
+    animation: showUp 1s linear forwards;
+}
+
+@keyframes showUp {
+    0% {
+        opacity: 0;
+        top: -50%;
+    }
+
+    50% {
+        opacity: 0.5;
+        top: 0;
+    }
+
+    100% {
+        opacity: 1;
+        top: 58%;
+        z-index: 1000;
+    }
+}

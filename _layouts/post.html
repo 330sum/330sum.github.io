@@ -1,41 +1,47 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html>
+  {% include head.html %}
 
-<main id="main" class="main-content" aria-label="Content">
-  <article class="h-entry">
-    {% include page-image.html %}
-    <div class="page-wrapper">
-      <header class="page-header">
-        {% assign title = page.title | markdownify | strip_html %}
-        {% if page.link %}
-          <h1 id="page-title" class="page-title p-name"><a href="{{ page.link }}">{{ title }} <span class="link-arrow">&rarr;</span></a></h1>
-        {% else %}
-          <h1 id="page-title" class="page-title p-name">{{ title }}</h1>
-        {% endif %}
-      </header>
+  <body>
+    {% include header.html %}
 
-      <div class="page-sidebar">
-        {% include page-author.html %}
-        {% include page-categories.html %}
-        {% include page-tags.html %}
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+          <header class="post-header">
+
+            {% if page.draft %}
+              {% include draft-banner.html %}
+            {% endif %}
+
+            <h1 class="post-title">
+            {% if page.headline_formatted_title %}
+              {{ page.headline_formatted_title | newline_to_br }}
+            {% else %}
+              {{ page.title }}
+            {% endif %}
+            </h1>
+
+            {% if page.subtitle %}<h1 class="post-subtitle">{{ page.subtitle }}</h1>{% endif %}
+            <p class="post-meta"><span class="post-date">{{ page.date | date: "%B %-d, %Y" }}
+            </span>{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
+          </header>
+
+          <article class="post-content">
+            {{ content }}
+          </article>
+
+          {% if page.draft %}
+              {% include draft-banner.html %}
+          {% endif %}
+
       </div>
-
-      <div class="page-content">
-        <div class="e-content">
-          {{ content }}
-        </div>
-
-        {% if page.share %}
-          {% include social-share.html %}
-        {% endif %}
-
-        {% if site.disqus.shortname %}
-          {% include disqus-comments.html %}
-        {% endif %}
-
-        {% include page-pagination.html %}
       </div>
     </div>
-  </article>
-</main>
+
+    {% include footer.html %}
+
+    {% include foot.html %}
+  </body>
+</html>

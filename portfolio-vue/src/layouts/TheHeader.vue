@@ -1,30 +1,44 @@
 <template>
   <header class="header">
+    <!-- 로고 -->
+    <RouterLink to="/" class="logo">sumin</RouterLink>
 
-    <div class="logo">
-      <RouterLink to="/">sumin</RouterLink>
-    </div>
+    <!-- 데스크톱 네비 -->
+    <nav class="nav desktop">
+      <RouterLink to="/" class="nav-link">Home</RouterLink>
+      <RouterLink to="/resume" class="nav-link">Resume</RouterLink>
+      <RouterLink to="/portfolio" class="nav-link">Portfolio</RouterLink>
+      <RouterLink to="/personal-map" class="nav-link">Map</RouterLink>
 
-    <nav>
-      <ul class="nav">
-        <li>
-          <RouterLink to="/" class="nav-link">Home</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/resume" class="nav-link">Resume</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/portfolio" class="nav-link">Portfolio</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/personal-map" class="nav-link">Map</RouterLink>
-        </li>
-      </ul>
+      <button class="lang-btn" @click="toggleLanguage">
+        {{ language === 'kr' ? 'EN' : 'KR' }}
+      </button>
+    </nav>
+
+    <!-- 모바일 햄버거 -->
+    <button class="hamburger" @click="open = !open">☰</button>
+
+    <!-- 모바일 메뉴 -->
+    <nav v-if="open" class="nav mobile">
+      <RouterLink @click="close" to="/">Home</RouterLink>
+      <RouterLink @click="close" to="/resume">Resume</RouterLink>
+      <RouterLink @click="close" to="/portfolio">Portfolio</RouterLink>
+      <RouterLink @click="close" to="/personal-map">Map</RouterLink>
+
+      <button class="lang-btn" @click="toggleLanguage">
+        {{ language === 'kr' ? 'EN' : 'KR' }}
+      </button>
     </nav>
   </header>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue';
+import { language, toggleLanguage } from '@/stores/useLanguage';
+
+const open = ref(false);
+const close = () => (open.value = false);
+</script>
 
 <style scoped>
 .header {
@@ -34,32 +48,25 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  padding: 16px 32px;
+  padding: 16px 24px;
   background: white;
   border-bottom: 1px solid #e5e7eb;
 }
 
-/* 로고 */
-.logo a {
+.logo {
   font-size: 1.4rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
   text-decoration: none;
   color: #0f172a;
 }
 
-/* 네비 */
 .nav {
   display: flex;
-  gap: 24px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  align-items: center;
+  gap: 20px;
 }
 
 .nav-link {
-  position: relative;
   text-decoration: none;
   font-size: 0.95rem;
   color: #475569;
@@ -71,20 +78,47 @@
 .nav-link:hover {
   color: #0f172a;
 }
-
 /* active (RouterLink 기본 클래스 사용) */
 .nav-link.router-link-active {
   color: #0f172a;
   font-weight: 600;
 }
 
-.nav-link.router-link-active::after {
-  content: '';
+.lang-btn {
+  border: 1px solid #cbd5f5;
+  background: white;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.4rem;
+  background: none;
+  border: none;
+}
+
+.desktop {
+  display: flex;
+}
+
+.mobile {
   position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 100%;
-  height: 2px;
-  background-color: #0f172a;
+  top: 64px;
+  right: 16px;
+  flex-direction: column;
+  background: white;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .desktop {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+  }
 }
 </style>
